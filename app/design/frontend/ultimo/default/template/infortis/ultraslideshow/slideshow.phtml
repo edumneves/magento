@@ -1,0 +1,87 @@
+<?php
+/**
+ * @var $this Infortis_UltraSlideshow_Block_Slideshow
+ */
+?>
+<?php if (Mage::helper('ultraslideshow')->getCfg('general/enabled')): ?>
+<?php
+	$helper = $this->helper('ultraslideshow');
+	
+	//Slideshow top margin
+	$slideshowMargin = '';
+	$marginTop = $helper->getCfg('general/margin_top');
+	if ($marginTop != 0)
+		$slideshowMargin = 'style="margin-top:' . $marginTop . 'px;"';
+?>
+
+<div class="the-slideshow-wrapper clearer" <?php echo $slideshowMargin; ?>>
+
+	<?php
+		$helper = $this->helper('ultraslideshow');
+
+    	//Determine position of the slideshow (left or right)
+		$bannersPosition = $helper->getCfg('banners/position');
+		($bannersPosition == 'left') ? $slideshowPositionClass = 'right' : $slideshowPositionClass = '';
+		
+		//Determin width (grid units) of the slideshow and banners
+		$slideshowGridClass = '';
+		$bannersGridClass = '';
+		$banners = $this->getBanners();
+		if ($banners)
+		{
+			if ($bannersPosition == 'left') //Slideshow at the right side
+			{
+				$slideshowGridClass = 'grid12-9 no-right-gutter';
+				$bannersGridClass = 'grid12-3 no-left-gutter';
+			}
+			else //Slideshow at the left side
+			{
+				$slideshowGridClass = 'grid12-9 no-left-gutter';
+				$bannersGridClass = 'grid12-3 no-right-gutter';
+			}
+		}
+		else
+		{
+			$slideshowGridClass = 'grid-full no-gutter';
+		}
+
+		//Hide slides (not including banners) on mobile devices? "Yes" is default.
+		$hideSlideshowClass = '';
+		if ($helper->getCfg('general/hide'))
+		{
+			$hideSlideshowClass = 'hide-below-768';
+		}
+	?>
+
+    <div class="the-slideshow gen-slider-arrows2 gen-slider-pager1 gen-slider-pager1-pos-bottom-right <?php echo $slideshowGridClass . ' ' . $slideshowPositionClass . ' ' . $hideSlideshowClass; ?>">
+        <ul class="slides">
+
+			<?php foreach ($this->getStaticBlockIds() as $bid): ?>
+                <?php if (!empty($bid)): ?>
+                	<li class="slide">
+                    	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($bid)->toHtml(); ?>
+					</li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            
+        </ul>
+    </div>
+    <?php echo $this->getChildHtml('slideshowConfig'); ?>
+    
+    <?php if ($banners): ?>
+    
+    	<?php //Hide banners on mobile devices? "Yes" is default.
+			$hideBannersClass = 'hide-below-768';
+			if ($helper->getCfg('banners/hide') == false)
+				$hideBannersClass = '';
+		?>
+        
+		<div class="slideshow-banners <?php echo $bannersGridClass . ' ' . $hideBannersClass; ?>">
+        	<?php echo $banners; ?>
+        </div>
+        
+    <?php endif; ?>
+    
+</div>
+
+<?php endif; ?>

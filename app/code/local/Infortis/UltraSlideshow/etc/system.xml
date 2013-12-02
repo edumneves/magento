@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+		<infortis translate="label">
+			<label>Infortis Extensions</label>
+			<sort_order>152</sort_order>
+		</infortis>
+	</tabs>
+    <sections>
+        <ultraslideshow translate="label">
+			<label>Slideshow</label>
+			<tab>infortis</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>90</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+            <groups>
+				<general translate="label">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Slideshow</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+						<blocks translate="label">
+                            <label>Displayed Slides</label>
+							<comment>Comma separated list of static block identifiers. These static blocks will be displayed as slides.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </blocks>
+						<hide translate="label">
+							<label>Hide Slides On Mobile Devices</label>
+							<comment>If set to "Yes", slideshow will be hidden on narrow screens. Important: banners can be hidden separately, see options below.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</hide>
+						<fx translate="label">
+							<label>Transition Effect Animation</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>ultraslideshow/source_fx</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</fx>
+						<easing translate="label">
+							<label>Easing Method</label>
+							<comment>The type of easing applied to the transition animation.</comment>
+                            <frontend_type>select</frontend_type>
+							<source_model>infortis/system_config_source_js_jquery_easing</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</easing>
+						<timeout translate="label">
+                            <label>Timeout</label>
+							<comment>Time (in milliseconds) between slide transitions. Enter "0" to disable automatic transition. Note that 1000 miliseconds = 1 second.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </timeout>
+						<speed translate="label">
+                            <label>Transition Speed</label>
+							<comment>Time (in milliseconds) of slide transition animation.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </speed>
+						<smooth_height translate="label">
+							<label>Smooth Height</label>
+							<comment><![CDATA[<strong style="color:#F00;">New:</strong> Enable, if slides do not have the same height. It will allow height of the slideshow to animate smoothly. <strong>Important:</strong> do not enable this option if all your slides have exactly the same height.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>85</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</smooth_height>
+						<pause translate="label">
+							<label>Pause on Hover</label>
+							<comment>If enabled, when the slideshow is mouseovered then the automatic transition functionality will pause.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</pause>
+						<loop translate="label">
+							<label>Loop</label>
+							<comment>If enabled, animation will loop.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</loop>
+						<margin_top translate="label">
+                            <label>Top Margin</label>
+							<comment>Additional top margin for the slideshow. You can set margin to add extra space above the slideshow. Enter negative value to pull the slideshow up.</comment>
+                            <frontend_type>text</frontend_type>
+							<validate>validate-number</validate>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </margin_top>
+					</fields>
+				</general>
+				<banners translate="label">
+                    <label>Banners</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<banners translate="label">
+                            <label>Banners</label>
+							<comment><![CDATA[Identifier of a single static block which contains additional banners for the slideshow. Banners will be displayed at the side of the slideshow.<br/><strong style="color:#F00;">Important:</strong> leave empty to disable banners.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </banners>
+						<position translate="label">
+							<label>Position of Banners</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>ultraslideshow/source_banners_position</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</position>
+						<hide translate="label">
+							<label>Hide Banners On Mobile Devices</label>
+							<comment>If set to "Yes", banners will be hidden on mobile devices.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</hide>
+					</fields>
+				</banners>
+            </groups>
+        </ultraslideshow>
+    </sections>
+</config> 

@@ -1,0 +1,58 @@
+
+/* Brands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+
+/* On product page
+-------------------------------------------------------------- */
+.box-brand a {
+	margin:0 auto;
+	display:block;
+}
+
+.box-brand img {
+	margin:0 auto;
+	display:block;
+}
+
+.box-brand .brand-name {}
+.box-brand .brand-name .label {}
+
+/* Brand slider
+-------------------------------------------------------------- */
+.brand-slider .slides > li {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    position: relative;
+}
+
+/* Fix possible glitches during animation */
+.brand-slider .slides > li img {
+	-webkit-transform: translateZ(0);
+	/*-webkit-transform: translateZ(0); -moz-transform: translateZ(0); transform: translateZ(0);*/
+}
+
+/* Effects
+-------------------------------------------------------------- */
+.box-brand a img,
+.brand-slider .slides a img {
+	transition:			opacity 300ms ease-in-out;
+	-moz-transition:	opacity 300ms ease-in-out;
+	-webkit-transition:	opacity 300ms ease-in-out;
+	-o-transition:		opacity 300ms ease-in-out;
+}
+.box-brand a:hover img,
+.brand-slider .slides a:hover img {
+	opacity:0.65;
+	filter:alpha(opacity=65);
+}
+
+/* Brand in secondary column on product page
+-------------------------------------------------------------- */
+.product-secondary-column .box-brand .attribute {
+	font-size:1.25em;
+	font-weight:bold;
+	line-height:1.2em;
+	margin:10px 0;
+	text-align:center;
+}

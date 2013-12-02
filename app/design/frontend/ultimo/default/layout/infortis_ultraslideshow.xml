@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <default>
+	
+        <reference name="head">
+			<!-- CSS -->
+            <action method="addItem"><type>skin_css</type><name>css/infortis/ultra-slideshow/ultra-slideshow.css</name></action>
+			<action method="addItem"><type>skin_css</type><name>css/infortis/_shared/generic-nav.css</name><params/></action>
+			
+			<!-- js -->
+            <action method="addJs"><script>infortis/jquery/jquery-1.7.2.min.js</script></action>
+			<action method="addJs"><script>infortis/jquery/jquery-noconflict.js</script></action>
+			
+			<action method="addJs"><script>infortis/jquery/plugins/jquery.easing.min.js</script></action>
+			<action method="addJs"><script>infortis/jquery/plugins/jquery.flexslider.min.js</script></action>
+        </reference>
+		
+    </default>
+	
+	<!-- Insert slideshow at the top of the homepage -->
+	<cms_index_index>
+	
+		<reference name="preface">
+			<block type="ultraslideshow/slideshow" name="ultraslideshow" as="ultraslideshow" template="infortis/ultraslideshow/slideshow.phtml" before="-">
+				<block type="ultraslideshow/config" name="ultraslideshow.config" as="slideshowConfig" template="infortis/ultraslideshow/config.phtml" />
+			</block>
+		</reference>
+		
+    </cms_index_index>
+	
+</layout>

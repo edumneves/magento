@@ -1,0 +1,12 @@
+/**
+ * Override CSS components
+ */
+
+
+
+/* Itemslider %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+/* Buttons aligned at the bottom */
+.equal-height .slides > .item { position: static; padding-bottom: 45px; }
+.equal-height .slides .actions { position: absolute; bottom: 0; }

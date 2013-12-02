@@ -1,0 +1,57 @@
+/**
+ * Slideshow
+ */
+
+
+
+/* Necessary styles
+-------------------------------------------------------------- */
+.the-slideshow {margin: 0; padding: 0;}
+.the-slideshow .slides > li {display: none; -webkit-backface-visibility: hidden;} /* Hide the slides before the JS is loaded. Avoids image jumping */
+.the-slideshow .slides img {max-width: 100%; display: block;}
+.pauseplay span {text-transform: capitalize;}
+
+/* Clearfix for the .slides element */
+.the-slideshow .slides:after {content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;}
+html[xmlns] .the-slideshow .slides {display: block;}
+* html .the-slideshow .slides {height: 1%;}
+
+/* No JavaScript Fallback */
+/* If you are not using another script, such as Modernizr, make sure you
+ * include js that eliminates this class on page load */
+.no-js .the-slideshow .slides > li:first-child {display: block;}
+
+/* Default style
+-------------------------------------------------------------- */
+.the-slideshow { margin:0 auto 2%; position:relative; zoom:1; }
+.the-slideshow .slides { zoom:1; }
+.the-slideshow .slides > li {
+	position:relative;
+}
+
+/* Fix possible glitches during animation */
+.the-slideshow .slides > li {
+	-webkit-transform: translateZ(0);
+	/*-webkit-transform: translateZ(0); -moz-transform: translateZ(0); transform: translateZ(0);*/
+}
+
+
+/* Slideshow banners
+-------------------------------------------------------------- */
+.slideshow-banners { margin-bottom:2.1%; /* Important: a little bit more than slideshow bottom margin to avoid jumping on slide transition */ }
+.slideshow-banners .banner { position:relative; /* Container for caption */ }
+.slideshow-banners a.banner, /* Backward compatibility, link could have "banner" class */
+.slideshow-banners .banner a { display:block; }
+
+/* Effects
+-------------------------------------------------------------- */
+.the-slideshow-wrapper .fade-on-slideshow-hover {
+	transition:			opacity 300ms ease-in-out;
+	-moz-transition:	opacity 300ms ease-in-out;
+	-webkit-transition:	opacity 300ms ease-in-out;
+	-o-transition:		opacity 300ms ease-in-out;
+}
+.the-slideshow-wrapper:hover .fade-on-slideshow-hover {
+	opacity:0.75;
+	filter:alpha(opacity=75);
+}

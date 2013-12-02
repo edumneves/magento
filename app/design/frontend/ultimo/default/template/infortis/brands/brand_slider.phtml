@@ -1,0 +1,125 @@
+<?php
+/**
+ *
+ */
+?>
+<?php $helper = Mage::helper('brands'); ?>
+<?php if ($helper->getCfg('slider/enable')): ?>
+
+	<?php
+	if ($helper->getCfg('slider/all_brands'))
+	{
+		$brands = $this->getAllBrands();
+	}
+	else
+	{
+		$brands = $this->getAllBrandsInUse();
+	}
+	
+	//Block parameters
+	$isResponsive = $this->getIsResponsive(); //is_responsive
+	$breakpoints = $this->getBreakpoints(); //breakpoints
+	$showItems = $this->getShowItems(); //show_products
+	if (!$showItems)
+	{
+		$showItems = 5; //IMPORTANT: set default number of visible items
+	}
+	
+	//Slider timeout (if set: automatic slideshow)
+	$timeout = $this->getTimeout(); //param: timeout
+	if ($timeout === NULL) //Param not set
+	{
+		$timeout = intval($helper->getCfg('slider/timeout'));
+	}
+	else
+	{
+		$timeout = intval($timeout);
+	}
+
+	//Slider initial delay
+	$initDelay = intval($this->getInitDelay()); //param: init_delay
+
+	//Number of items that should move on animation
+	$move = intval($this->getMove()); //param: move
+		
+	//Additional CSS classes
+	$sliderClasses = '';
+	if($isResponsive)
+	{
+		$sliderClasses .= ' itemslider-responsive';
+	}
+	?>
+
+<h3 class="section-title padding-right"><?php echo $this->getBlockName(); ?></h3>
+<div class="brand-slider-wrapper itemslider-wrapper">
+
+	<div class="nav-wrapper gen-slider-arrows1 gen-slider-arrows1-pos-top-right"></div>
+    
+	<div class="brand-slider itemslider itemslider-horizontal<?php if($sliderClasses) echo $sliderClasses; ?>">
+        <ul class="slides">
+            <?php foreach ($brands as $brand): ?>
+                <li class="item">
+                	<?php
+					$brandPageUrl = $this->getBrandPageUrl($brand);
+					//$brandDetailsHtml = '<img src="'. $this->getBrandImageUrl($brand) .'" alt="' . $brand . '" />';
+					?>
+                    <a href="<?php echo $this->getBrandPageUrl($brand); ?>" title="<?php echo $this->__('Click to see more products from %s', $brand); ?>">
+                    	<img src="<?php echo $this->getBrandImageUrl($brand); ?>" alt="<?php echo $brand; ?>" />
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul> <!-- end: slides -->
+    </div> <!-- end: itemslider -->
+
+</div> <!-- end: brand-slider-wrapper -->
+<script type="text/javascript">
+//<![CDATA[
+	jQuery(function($) {
+
+		$('.brand-slider-wrapper .itemslider').flexslider({
+			namespace: "",
+			animation: "slide",
+			animationLoop: <?php echo $helper->getCfg('slider/loop'); ?>,
+			
+			<?php if ($helper->getCfg('slider/easing')): ?>
+				easing: "<?php echo $helper->getCfg('slider/easing'); ?>",
+				useCSS: false,
+			<?php endif; ?>
+			
+			<?php if ($timeout): ?>
+				slideshowSpeed: <?php echo $timeout; ?>,
+			<?php else: ?>
+				slideshow: false,
+			<?php endif; ?>
+			
+			<?php if ($initDelay): ?>
+				initDelay: <?php echo $initDelay; ?>,
+			<?php endif; ?>
+			
+			<?php if ($speed = intval($helper->getCfg('slider/speed'))): ?>
+				animationSpeed: <?php echo $speed; ?>,
+			<?php endif; ?>
+			
+			pauseOnHover: <?php echo $helper->getCfg('slider/pause'); ?>,
+			controlNav: false,
+			controlsContainer: ".brand-slider-wrapper .nav-wrapper",
+
+			itemWidth: 188,
+			<?php if ($showItems): ?>
+				minItems: <?php echo $showItems; ?>,
+				maxItems: <?php echo $showItems; ?>,
+			<?php endif; ?>
+
+			move: <?php echo $move; ?>
+		})
+		<?php if ($breakpoints): ?>
+			.data("breakpoints", [ <?php echo $breakpoints; ?> ] )
+		<?php elseif ($showItems): ?>
+			.data("showItems", <?php echo $showItems; ?> )
+		<?php endif; ?>
+		; //IMPORTANT: don't remove semicolon!
+
+	});
+//]]>
+</script>
+<?php endif; ?>

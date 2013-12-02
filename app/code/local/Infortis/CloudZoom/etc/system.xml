@@ -1,0 +1,270 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+        <infortis translate="label">
+            <label>Infortis Extensions</label>
+            <sort_order>152</sort_order>
+        </infortis>
+    </tabs>
+    <sections>
+        <cloudzoom translate="label">
+			<label>Zoom</label>
+			<tab>infortis</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>200</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+            <groups>
+                <general>
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label">
+                            <label>Enable Module</label>
+							<comment>If disabled, images will be displayed the same as in Magento "default" theme.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+						<use_cloud_zoom translate="label">
+                            <label>Use Cloud Zoom</label>
+							<comment>If set to "Yes", Cloud Zoom will be used to zoom product images.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </use_cloud_zoom>
+                        <position translate="label">
+                            <label>Position</label>
+							<comment>Specify the position of the zoom area relative to the main image.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>infortis_cloudzoom/system_config_source_position</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </position>
+                        <lens_opacity translate="label">
+                            <label>Lens Opacity (%)</label>
+							<comment>Opacity of the lens pointer.</comment>
+                            <frontend_type>text</frontend_type>
+							<validate>validate-percents validate-digits</validate>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </lens_opacity>
+                        <zoom_width translate="label">
+                            <label>Zoom Area Width</label>
+                            <comment><![CDATA[Width of the zoom area. This field will be ignored if <strong>Position</strong> is set to "Inside". Leave empty to use default.]]></comment>
+                            <frontend_type>text</frontend_type>
+							<validate>validate-number</validate>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </zoom_width>
+                        <zoom_height translate="label">
+                            <label>Zoom Area Height</label>
+							<comment><![CDATA[Height of the zoom area. This field will be ignored if <strong>Position</strong> is set to "Inside". Leave empty to use default.]]></comment>
+                            <frontend_type>text</frontend_type>
+							<validate>validate-number</validate>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </zoom_height>
+                        <big_image_width translate="label">
+                            <label>Image Width After Zooming</label>
+                            <comment>Width of the enlarged image. This field refers to the actual resolution of the image after zooming.</comment>
+                            <frontend_type>text</frontend_type>
+							<validate>validate-number</validate>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </big_image_width>
+                        <big_image_height translate="label">
+                            <label>Image Height After Zooming</label>
+							<comment>Height of the enlarged image. This field refers to the actual resolution of the image after zooming.</comment>
+                            <frontend_type>text</frontend_type>
+							<validate>validate-number</validate>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </big_image_height>
+                        <tint_color translate="label">
+                            <label>Tint Color</label>
+                            <comment><![CDATA[Color which will cover the main image. Specify color in hex format, e.g. #aabbcc. Leave empty to disable. Does not work with <strong>Soft Focus</strong>.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tint_color>
+                        <tint_opacity translate="label">
+                            <label>Tint Opacity (%)</label>
+                            <frontend_type>text</frontend_type>
+							<validate>validate-percents validate-digits</validate>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tint_opacity>
+						<soft_focus translate="label">
+                            <label>Soft Focus</label>
+							<comment>Applies a subtle blur effect to the main image. Does not work with tint.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </soft_focus>
+						<smooth_move translate="label">
+                            <label>Smooth Move</label>
+							<comment>Amount of smoothness/drift of the zoom image as it moves. The higher the number, the smoother/more drifty the movement will be. 1 = no smoothing.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </smooth_move>
+                    </fields>
+                </general>
+				<images translate="label">
+                    <label>Image Size</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<aspect_ratio translate="label">
+							<label>Keep Image Aspect Ratio</label>
+							<comment>
+								<![CDATA[Set "Yes", to keep the aspect ratio of the product images. <strong>Height</strong> specified in this section <strong>will be ignored</strong> and the actual height of the images will be calculated automatically based on width.]]>
+							</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</aspect_ratio>
+						
+						<main_width translate="label">
+                            <label>Main Image Width</label>
+							<comment>If width is not specified, default width and height will be used (364 pixels).</comment>
+                            <frontend_type>text</frontend_type>
+							<validate>validate-number</validate>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </main_width>
+						<main_height translate="label">
+                            <label>Main Image Height</label>
+							<comment>
+								<![CDATA[Leave empty to keep the aspect ratio of the image (height will be calculated automatically based on width). Notice: if width is not specified, <strong>default width and height</strong> will be used (364 pixels).]]>
+							</comment>
+                            <frontend_type>text</frontend_type>
+							<validate>validate-number</validate>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </main_height>
+						<!--
+						<thumbnail_width translate="label">
+                            <label>Thumbnail Image Width</label>
+							<comment>
+								<![CDATA[<strong>Deprecated: do not use this option, it will be removed in next version.</strong><br/>
+								If width is not specified, default width and height will be used (65 pixels).]]>
+							</comment>
+                            <frontend_type>text</frontend_type>
+							<validate>validate-number</validate>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </thumbnail_width>
+						<thumbnail_height translate="label">
+                            <label>Thumbnail Image Height</label>
+							<comment>
+								<![CDATA[<strong>Deprecated: do not use this option, it will be removed in next version.</strong><br/>
+								Leave empty to keep the aspect ratio of the thumbnail image (height will be calculated automatically based on width). Notice: if width is not specified, <strong>default width and height</strong> will be used (65 pixels).]]>
+							</comment>
+                            <frontend_type>text</frontend_type>
+							<validate>validate-number</validate>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </thumbnail_height>
+						-->
+					</fields>
+				</images>
+				<lightbox>
+                    <label>Lightbox</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label">
+                            <label>Use Lightbox</label>
+							<comment>If set to "Yes", lightbox will be used to zoom product images.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+						<max_width translate="label">
+                            <label>Maximum Width</label>
+							<comment>Set a maximum width for lightbox content. Examples: 90%, 500px, 500.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </max_width>
+						<max_height translate="label">
+                            <label>Maximum Height</label>
+							<comment>Set a maximum height for lightbox content. Examples: 90%, 500px, 500.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </max_height>
+						<group translate="label">
+                            <label>Lightbox As Gallery</label>
+							<comment>If set to "Yes", after image is displayed in the lightbox, "next" and "previous" buttons will be displayed.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </group>
+                    </fields>
+                </lightbox>
+            </groups>
+        </cloudzoom>
+    </sections>
+</config>
