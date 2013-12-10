@@ -1,0 +1,46 @@
+<?php 
+$helper = Mage::helper("av5_correios");
+?>
+<div class="content-header">
+    <table class="grid-header">
+        <tr>
+            <td><h3>Atualiza&ccedil;&otilde;es Correios</h3></td>
+            <td class="a-right">
+            	<button onclick="top.location.href='<?php echo $this->getUrl('*/*/populate')?>';" class="scalable save" type="button"><span>Popular Base</span></button>
+                <button onclick="editForm.submit()" class="scalable save" type="button"><span>Atualizar</span></button>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entry-edit">
+    <form id="edit_form" name="edit_form" method="post" action="<?php echo $this->getUrl('*/*/post')?>" target="_self">
+        <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+        <fieldset id="my-fieldset">
+            <table class="form-list">
+            	<thead>
+            		<tr>
+            		<th width="30">#</th>
+            		<th width="80%">Servi&ccedil;o</th>
+            		<th align="center">Registros para atualizar</th>
+            		</tr>
+            	</thead>
+            	<?php foreach($helper->services() as $service): ?>
+                <tr>
+                    <td><input type="radio" name="formulario[servico_id]" id="servico_id_<?php echo $service['servico']; ?>" value="<?php echo $service['servico']; ?>" /></td>
+                    <td><label for="servico_id_<?php echo $service['servico']; ?>"><?php echo $helper->getServiceName($service['servico']) . " ( " . $service['servico'] . " )"; ?></label></td>
+                    <td align="center"><b><?php echo $service['total']; ?></b></td>
+                </tr>
+                <?php endforeach; ?>
+            </table>
+        </fieldset>
+    </form>
+</div>
+<script type="text/javascript">
+    var editForm = new varienForm('edit_form');
+</script>
+<style>
+td.label {
+	text-align: right;
+	padding-right: 10px;
+}
+</style>

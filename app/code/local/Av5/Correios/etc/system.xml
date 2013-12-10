@@ -1,0 +1,309 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * AV5 Tecnologia
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL).
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   Shipping (Frete)
+ * @package    Av5_Correios
+ * @copyright  Copyright (c) 2013 Av5 Tecnologia (http://www.av5.com.br)
+ * @author     AV5 Tecnologia <anderson@av5.com.br>
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <sections>
+        <carriers>
+            <groups>
+                <av5_correios translate="label" module="av5_correios">
+                    <label>Correios Offline</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+                        <![CDATA[ <div style="background: #FFF; border: 1px solid #4096ee;">
+                    	<img src="http://www.av5.com.br/logo-modulos.png" style="float: left;" />
+                        <div style="padding:10px;float: left;text-align: left">
+                        <a href="http://www.av5.com.br" target="_blank"><b>AV5 Tecnologia</b></a> em desenvolvimento de módulos Magento.<br />
+                        Para obter suporte a este módulo visite: <a href="http://www.av5.com.br/correios-offline/">Suporte AV5.Correios</a>
+                        </div>
+                        <div class="clear"></div>
+                        </div> ]]>
+                    </comment>
+                    <fields>
+                        <active translate="label">
+                            <label>Habilitar</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Nome de exibição</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <posting_methods translate="label">
+                            <label>Serviços Disponíveis</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>Av5_Correios_Model_Source_PostingMethods</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Serviços dos Correios disponíveis em sua loja.</comment>
+                        </posting_methods>
+                        <free_method translate="label">
+                            <label>Serviço para frete grátis</label>
+                            <frontend_type>select</frontend_type>
+                            <frontend_class>free-method</frontend_class>
+                            <source_model>Av5_Correios_Model_Source_PostingMethods</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Escolha o serviço que deverá ser utilizado em conjunto com regras de frete grátis.</comment>
+                        </free_method>
+                        <weight_type translate="label">
+                            <label>Medida de Peso</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Av5_Correios_Model_Source_WeightType</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Medida padrão para peso dos produtos.</comment>
+                        </weight_type>
+						<show_delivery translate="label">
+                            <label>Exibir Prazo de Entrega</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_delivery>			
+                        <login translate="label">
+                            <label>Número do contrato com Correios</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </login>
+                        <password translate="label">
+                            <label>Senha do contrato com Correios</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>O padrão de senha são os 8 primeiros dígitos do CNPJ</comment>
+                        </password>
+                        <owner_hands translate="label">
+                            <label>Utilizar Serviço de Mão Própria</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </owner_hands>
+                        <received_warning translate="label">
+                            <label>Utilizar Serviço de Aviso de Recebimento</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </received_warning>
+                        <declared_value translate="label">
+                            <label>Utilizar Serviço de Valor Declarado</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </declared_value>
+                        <default_height translate="label">
+                            <label>Altura Padrão (cm)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Quando não configurada no produto será usada.<br />Mínimo de 2 cm.]]></comment>
+                        </default_height>
+                        <default_width translate="label">
+                            <label>Comprimento Padrão (cm)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Quando não configurado no produto será usado.<br />Mínimo de 16 cm.]]></comment>
+                        </default_width>
+                        <default_depth translate="label">
+                            <label>Largura Padrão (cm)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Quando não configurada no produto será usada.<br />Mínimo de 11 cm.]]></comment>
+                        </default_depth>
+                        <min_order_value translate="label">
+                            <label>Valor Mínimo de Compra</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </min_order_value>
+                        <max_order_value translate="label">
+                            <label>Valor Máximo de Compra</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>160</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </max_order_value>
+						<max_weight translate="label">
+                            <label>Peso Máximo Permitido Pelos Correios</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>170</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Utilize o mesmo formato de peso configurado acima, kilos ou gramas.</comment>
+                        </max_weight>
+                        <handling_fee translate="label">
+                            <label>Taxa de Postagem</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>180</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Essa taxa será adicionada ao valor do frete.</comment>
+                        </handling_fee>
+                        <add_delivery_days translate="label">
+                            <label>Adicionar ao prazo dos Correios (dias)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>190</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Adicionará mais dias aos prazos fornecidos pelos Correios.</comment>
+                        </add_delivery_days>
+                        <update_frequency translate="label">
+                            <label>Frequência de atualização (em dias)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>191</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Frequência em que a tabela será atualizada (em dias).</comment>
+                        </update_frequency>
+                        <limit_records translate="label">
+                            <label>Limite de registros atualizados</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>192</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Limite de registros atualizados por requisição.</comment>
+                        </limit_records>
+                        <correioserror translate="label">
+                            <label>Mensagem que exibe os erros dos Correios</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </correioserror>
+						<msgprazo translate="label">
+                            <label>Mensagem que exibe o prazo de entrega</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </msgprazo>			
+						<valueerror translate="label">
+                            <label>Mensagem de valor fora do permitido</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>220</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </valueerror>
+						<zipcodeerror translate="label">
+                            <label>Mensagem de CEP incorreto</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>230</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </zipcodeerror>
+						<maxweighterror translate="label">
+                            <label>Mensagem de peso fora do permitido</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>240</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </maxweighterror>
+                        <weightzeroerror translate="label">
+                            <label>Mensagem de peso zero</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>250</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </weightzeroerror>
+                        <coderror translate="label">
+                            <label>Mensagem de falta de Código Administrativo</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>260</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </coderror>
+                        <showmethod translate="label">
+                            <label>Mostrar método mesmo se não aplicável</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>270</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Se houver um erro ou o método não for aplicável naquela situação, mesmo assim mostrar as mensagens de erro?</comment>
+                        </showmethod>
+						<sort_order translate="label">
+                            <label>Ordenar por</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>280</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>                       
+                    </fields>
+                </av5_correios>
+            </groups>
+        </carriers>
+    </sections>
+</config>

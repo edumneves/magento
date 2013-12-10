@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<layout>
+    <av5_correios_adminhtml_update_index>
+        <update handle="av5_correios_update_index"/>
+        <reference name="content">
+            <block type="adminhtml/template" name="updaterForm" template="av5_correios/index.phtml"/>
+        </reference>
+    </av5_correios_adminhtml_update_index>
+</layout>

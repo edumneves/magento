@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * AV5 Tecnologia
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL).
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   Shipping (Frete)
+ * @package    Av5_Correios
+ * @copyright  Copyright (c) 2013 Av5 Tecnologia (http://www.av5.com.br)
+ * @author     AV5 Tecnologia <anderson@av5.com.br>
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Av5_Correios>
+            <version>0.1.0</version>
+            <depends>
+                <Mage_Shipping />
+            </depends>
+        </Av5_Correios>
+    </modules>
+    <global>
+    	<sales>
+            <quote>
+                <item>
+                    <product_attributes>
+                        <volume_altura/>
+                        <volume_comprimento/>
+                        <volume_largura/>
+                    </product_attributes>
+                </item>
+            </quote>
+        </sales>
+    	<models>
+            <av5_correios>
+                <class>Av5_Correios_Model</class>
+            </av5_correios>
+            <av5_correios_shipping>
+				<class>Av5_Correios_Model</class>
+				<resourceModel>av5_correios_mysql4</resourceModel>
+			</av5_correios_shipping>
+			<av5_correios_mysql4>
+				<class>Av5_Correios_Model_Mysql4</class>
+				<entities>
+		  			<correios>
+						<table>tabela_correios</table>
+					</correios>
+				</entities>
+	      	</av5_correios_mysql4>
+    	</models>
+        <resources>
+            <av5_correios_setup>
+                <setup>
+                    <module>Av5_Correios</module>
+                </setup>
+                <connection>
+		        	<use>core_setup</use>
+		        </connection>
+	            <av5_correios_write>
+	                <connection>
+	                    <use>core_write</use>
+	                </connection>
+	            </av5_correios_write>
+	            <av5_correios_read>
+	                <connection>
+	                    <use>core_read</use>
+	                </connection>
+	            </av5_correios_read>
+            </av5_correios_setup>
+        </resources>
+        <helpers>
+            <av5_correios>
+                <class>Av5_Correios_Helper</class>
+            </av5_correios>
+        </helpers>
+        <sales>
+            <shipping>
+                <carriers>
+                    <av5_correios>
+                        <class>Av5_Correios_Model_Carrier_CorreiosMethod</class>
+                    </av5_correios>
+                </carriers>
+            </shipping>
+        </sales>
+    </global>
+
+    <default>
+        <carriers>
+            <av5_correios>
+                <!-- GENERAL -->
+                <active>1</active>
+                <model>Av5_Correios_Model_Carrier_CorreiosMethod</model>
+                <title>Correios</title>
+                <servicos>40010</servicos>
+                <die_errors>1,2,3,4,5,33,34,35,36,37,38,888,7,99</die_errors>
+                <show_delivery>0</show_delivery>
+                <min_order_value>0</min_order_value>
+                <max_order_value>10000</max_order_value>
+                <maxweight>30</maxweight>
+                <handling_fee>0</handling_fee>
+                <ws_timeout>30</ws_timeout>
+
+                <!-- OPTIONS -->
+                <owner_hands>0</owner_hands>
+                <received_warning>0</received_warning>
+                <declared_value>0</declared_value>
+
+                <!-- PAC -->
+                <default_height>2</default_height>
+                <default_width>16</default_width>
+                <default_depth>11</default_depth>
+                <height_sent>2</height_sent>
+                <width_sent>16</width_sent>
+                <depth_sent>11</depth_sent>
+
+                <!-- CONFIG -->
+                <free_method>40010</free_method>
+                <weight_type>kg</weight_type>
+                <add_delivery_days>0</add_delivery_days>
+                <showmethod>1</showmethod>
+
+                <!-- MESSAGES -->
+                <msgprazo>%s - Em média %d dia(s)</msgprazo>
+                <correioserror>Houve um erro inesperado, por favor entre em contato. %s</correioserror>
+                <valueerror>Valor de compra fora do permitido pelos Correios. Por favor entre em contato conosco.</valueerror>
+                <zipcodeerror>Por favor, corrija o CEP digitado, ele não está correto.</zipcodeerror>
+                <maxweighterror>Peso dos produtos acima do permitido pelos Correios. Por favor entre em contato conosco.</maxweighterror>
+                <weightzeroerror>Lojista: O peso do produto deverá ser maior que zero. Se você está usando a media de peso como gramas, o peso mínimo é de 10 gramas.</weightzeroerror>
+                <coderror>Lojista: Para calcular esse serviço você precisa ter contrato com os Correios.</coderror>
+                
+                <!-- SYSTEM -->
+                <serv_40010>Sedex,3</serv_40010>
+                <serv_40096>Sedex,3</serv_40096>
+                <serv_81019>E-Sedex,3</serv_81019>
+                <serv_41025>PAC,3</serv_41025>
+                <serv_41106>PAC,3</serv_41106>
+                <serv_41068>PAC,3</serv_41068>
+                <serv_40215>Sedex 10,1</serv_40215>
+                <serv_40290>Sedex HOJE,1</serv_40290>
+                <serv_40045>Sedex a Cobrar,5</serv_40045>
+                
+                <pac_codes>41025,41106,41068</pac_codes>
+                <acobrar_code>40045</acobrar_code>
+                <contrato_codes>40096,81019,41068</contrato_codes>
+				
+				<!-- UPDATER SETTINGS -->
+                <!-- url_ws_correios>http://ws.correios.com.br/calculador/CalcPrecoPrazo.asmx/CalcPrecoPrazo</url_ws_correios -->
+                <url_ws_correios>http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?StrRetorno=xml</url_ws_correios>
+                <update_frequency>1</update_frequency>
+                <limit_records>400</limit_records>
+            </av5_correios>
+        </carriers>
+    </default>
+    <admin>
+        <routers>
+            <av5_correios>
+                <use>admin</use>
+                <args>
+                    <module>Av5_Correios</module>
+                    <frontName>av5_correios</frontName>
+                </args>
+            </av5_correios>
+        </routers>
+    </admin>
+    <adminhtml>
+    	<menu>
+            <sales>
+                <children>
+                    <av5_correios_adminform translate="title" module="av5_correios">
+                        <title>Atualiza Tabela Correios</title>
+                        <action>av5_correios/adminhtml_update</action>
+                        <sort_order>1500</sort_order>
+                    </av5_correios_adminform>
+                </children>
+            </sales>
+        </menu>
+        
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <sales>
+                            <children>
+                                <av5_correios_adminform>
+                                    <title>Atualiza Tabela Correios</title>
+                                </av5_correios_adminform>
+                            </children>
+                        </sales>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+            <updates>
+                <av5_correios>
+                    <file>av5_correios.xml</file>
+                </av5_correios>
+            </updates>
+        </layout>
+    </adminhtml>
+    <crontab>
+    	<jobs>
+    		<av5_correios_updater>
+    			<schedule>
+    				<cron_expr>0,10,20,30,40,50 * * * *</cron_expr>
+    			</schedule>
+    			<run>
+    				<model>av5_correios/updater::update</model>
+    			</run>
+    		</av5_correios_updater>
+    	</jobs>
+    </crontab>
+</config>
